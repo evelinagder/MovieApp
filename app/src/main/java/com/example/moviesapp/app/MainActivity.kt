@@ -12,4 +12,6 @@ class MainActivity : BaseActivity<com.example.moviesapp.databinding.ActivityMain
 
     override fun getLayoutResId(): Int = R.layout.activity_main
 
+
+
 }
