@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    ext {
+        dependencyVersions = [
+                kotlinVersion      : '1.3.21',
+                compiler_version   : '3.1.3',
+
+                lifecycle          : '2.0.0',
+                design             : '1.0.0',
+
+                junitVersion       : '4.12',
+                testRunnerVersion  : '1.1.0-alpha4',
+                espressoCoreVersion: '3.1.0-alpha4'
+        ]
+
+        dependencies = [
+                kotlinStdlib        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${dependencyVersions.kotlinVersion}",
+                kotlinReflect       : "org.jetbrains.kotlin:kotlin-reflect:${dependencyVersions.kotlinVersion}",
+
+                lifecycleExtensions : "androidx.lifecycle:lifecycle-extensions:${dependencyVersions.lifecycle}",
+                lifecycleCommonJava8: "androidx.lifecycle:lifecycle-common-java8:${dependencyVersions.lifecycle}",
+
+                design              : "com.google.android.material:material:${dependencyVersions.design}",
+
+                junit               : "junit:junit:${dependencyVersions.junitVersion}",
+                testRunner          : "androidx.test:runner:${dependencyVersions.testRunnerVersion}",
+                espresso            : "androidx.test.espresso:espresso-core:${dependencyVersions.espressoCoreVersion}",
+
+                dataBindingCompiler : "com.android.databinding:compiler:${dependencyVersions.compiler_version}"
+        ]
+
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${dependencyVersions.kotlinVersion}"
+        classpath "com.android.tools.build:gradle:${dependencyVersions.compiler_version}"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

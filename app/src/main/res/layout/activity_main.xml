@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+                name="mainActivityVM"
+                type="com.example.moviesapp.app.MainActivityViewModel"/>
+    </data>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="100dp"
+                  android:layout_marginStart="100dp"
+                  android:textColor="@color/design_default_color_primary"
+                  android:text="@{mainActivityVM.helloText}"
+        />
+
+    </LinearLayout>
+</layout>
