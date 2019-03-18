@@ -12,7 +12,8 @@ buildscript {
 
                 junitVersion       : '4.12',
                 testRunnerVersion  : '1.1.0-alpha4',
-                espressoCoreVersion: '3.1.0-alpha4'
+                espressoCoreVersion: '3.1.0-alpha4',
+                navigationVersion  : '1.0.0-alpha06'
         ]
 
         dependencies = [
@@ -28,7 +29,9 @@ buildscript {
                 testRunner          : "androidx.test:runner:${dependencyVersions.testRunnerVersion}",
                 espresso            : "androidx.test.espresso:espresso-core:${dependencyVersions.espressoCoreVersion}",
 
-                dataBindingCompiler : "com.android.databinding:compiler:${dependencyVersions.compiler_version}"
+                dataBindingCompiler : "com.android.databinding:compiler:${dependencyVersions.compiler_version}",
+                navigationFragment  : "android.arch.navigation:navigation-fragment-ktx:${dependencyVersions.navigationVersion}",
+                navigationUi        : "android.arch.navigation:navigation-ui-ktx:${dependencyVersions.navigationVersion}"
         ]
 
     }

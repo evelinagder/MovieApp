@@ -3,14 +3,10 @@ package com.example.service.model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 
-const val WRONG_URL_MGS = "wrong_url"
-
 /**
  * Created by evelina.derventska
  */
-// This class is used in the cases that we don`t need to use the DB. For example login
-// and isAnalyst Check
-// RequestType: Type for the API response.
+
 abstract class NetworkBoundResource<RequestType> {
 
 
@@ -38,7 +34,7 @@ abstract class NetworkBoundResource<RequestType> {
                     setValue(Resource.success(result))
                 }
                 is ApiErrorResponse -> {
-                    val msg = if (response.responseCode == 404) WRONG_URL_MGS else response.errorMessage
+                    val msg = response.errorMessage
                     setValue(Resource.error(msg, null))
                 }
                 is ApiOfflineResponse -> {

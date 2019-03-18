@@ -32,10 +32,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(path: ':service')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-rc02'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     kapt rootProject.ext.dependencies.dataBindingCompiler
 
     //Kotlin
@@ -44,6 +46,10 @@ dependencies {
     //Android architectures
     api rootProject.ext.dependencies.lifecycleExtensions
     api rootProject.ext.dependencies.lifecycleCommonJava8
+
+    // Navigation
+    implementation rootProject.ext.dependencies.navigationFragment
+    implementation rootProject.ext.dependencies.navigationUi
 
     //Design libs
     implementation rootProject.ext.dependencies.design
