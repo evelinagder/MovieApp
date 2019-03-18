@@ -1,8 +1,8 @@
-package com.alemba.applicationservice.base
+package com.example.service
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.alemba.applicationservice.base.model.ApiResponse
+import com.example.service.model.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback

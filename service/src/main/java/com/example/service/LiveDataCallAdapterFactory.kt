@@ -1,7 +1,8 @@
-package com.alemba.applicationservice.base
+package com.example.service
 
 import androidx.lifecycle.LiveData
-import com.alemba.applicationservice.base.model.ApiResponse
+import com.example.service.model.ApiResponse
+
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
@@ -10,9 +11,9 @@ import java.lang.reflect.Type
 
 class LiveDataCallAdapterFactory : CallAdapter.Factory() {
     override fun get(
-            returnType: Type,
-            annotations: Array<Annotation>,
-            retrofit: Retrofit
+        returnType: Type,
+        annotations: Array<Annotation>,
+        retrofit: Retrofit
     ): CallAdapter<*, *>? {
         if (CallAdapter.Factory.getRawType(returnType) != LiveData::class.java) {
             return null
