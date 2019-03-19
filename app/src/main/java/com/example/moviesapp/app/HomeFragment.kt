@@ -4,6 +4,8 @@ package com.example.moviesapp.app
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapp.BR
 import com.example.moviesapp.R
@@ -13,6 +15,7 @@ import com.example.service.model.KidsMoviesResponse
 import com.example.service.model.Status
 
 class HomeFragment : BaseFragment<com.example.moviesapp.databinding.FragmentHomeBinding, HomeFragmentViewModel>() {
+
 
     override fun getViewModelResId(): Int = BR.homeFragmentVM
 
@@ -30,8 +33,8 @@ class HomeFragment : BaseFragment<com.example.moviesapp.databinding.FragmentHome
             if (it.status == Status.SUCCESS) {
                 val moviesRusult = it.data as KidsMoviesResponse
                 binding.moviesRecycler.adapter = MoviesAdapter(moviesRusult.results)
-                // binding.interestRecycler.adapter.notifyDataSetChanged()
             }
         })
+
     }
 }
