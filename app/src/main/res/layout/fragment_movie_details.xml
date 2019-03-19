@@ -1,0 +1,38 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+                name="detailsFragmentVM"
+                type="com.example.moviesapp.app.MovieDetailsFragmentViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+
+        <ImageView android:layout_width="match_parent"
+                   android:layout_height="200dp"
+                   android:id="@+id/details_poster"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+        />
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/details_title"
+                  android:text="@{detailsFragmentVM.movieTitle}"
+                  app:layout_constraintTop_toBottomOf="@id/details_poster"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  android:background="@color/colorPrimary"
+                  android:textColor="@color/color_white"
+                  android:padding="10dp"
+        />
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/details_description"
+                  android:text="@{detailsFragmentVM.movieDescription"
+                  app:layout_constraintTop_toBottomOf="@id/details_title"
+                  android:padding="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

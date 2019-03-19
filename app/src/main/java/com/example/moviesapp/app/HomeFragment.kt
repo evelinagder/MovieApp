@@ -2,12 +2,15 @@ package com.example.moviesapp.app
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapp.BR
 import com.example.moviesapp.R
+import com.example.moviesapp.app.recyclerview.MoviesAdapter
 import com.example.moviesapp.view.BaseFragment
+import com.example.service.model.KidsMoviesResponse
+import com.example.service.model.Status
 
 class HomeFragment : BaseFragment<com.example.moviesapp.databinding.FragmentHomeBinding, HomeFragmentViewModel>() {
 
@@ -20,10 +23,15 @@ class HomeFragment : BaseFragment<com.example.moviesapp.databinding.FragmentHome
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.moviesRecycler.layoutManager = LinearLayoutManager(this@HomeFragment.context)
+
         viewModel.getListTrigger.value = true
-        Log.d("EVAA", "ТРИГГЕР}")
-        viewModel.kidsMoviesResponse.observe(viewLifecycleOwner, Observer {
-            Log.d("EVAA", "STATUS  ${it.status}")
+        viewModel.moviesResponse.observe(viewLifecycleOwner, Observer {
+            if (it.status == Status.SUCCESS) {
+                val moviesRusult = it.data as KidsMoviesResponse
+                binding.moviesRecycler.adapter = MoviesAdapter(moviesRusult.results)
+                // binding.interestRecycler.adapter.notifyDataSetChanged()
+            }
         })
     }
 }

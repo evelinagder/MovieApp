@@ -9,7 +9,7 @@ class HomeFragmentViewModel : ViewModel() {
 
 
     val getListTrigger = MutableLiveData<Boolean>()
-    val kidsMoviesResponse = Transformations.switchMap(getListTrigger) {
+    val moviesResponse = Transformations.switchMap(getListTrigger) {
         MovieRepositoryImpl().getPopularKidsMovies()
     }
 

@@ -5,19 +5,12 @@
                 type="com.example.moviesapp.app.HomeFragmentViewModel"/>
     </data>
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/design_default_color_primary_dark">
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:orientation="vertical"
+                                               android:id="@+id/movies_recycler"
+                                               android:padding="15dp">
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="100dp"
-                  android:layout_marginStart="100dp"
-                  android:textColor="#FCEDEEE6"
-                  android:text="HELLLO"
-        />
+    </androidx.recyclerview.widget.RecyclerView>
 
-    </LinearLayout>
 </layout>
