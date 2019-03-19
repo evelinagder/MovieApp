@@ -36,8 +36,7 @@ abstract class BaseFragment<B, VM> : Fragment()
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         binding.lifecycleOwner = this
         binding.setVariable(bindResId, viewModel)
-
-        return view
+        return binding.root
     }
 
     /**

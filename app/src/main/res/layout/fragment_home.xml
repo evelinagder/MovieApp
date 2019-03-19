@@ -8,13 +8,14 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/design_default_color_primary_dark">
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="100dp"
                   android:layout_marginStart="100dp"
-                  android:textColor="@color/design_default_color_primary"
+                  android:textColor="#FCEDEEE6"
                   android:text="HELLLO"
         />
 

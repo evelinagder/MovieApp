@@ -31,7 +31,6 @@ abstract class BaseActivity<B, VM> : AppCompatActivity(), IActivity<VM> where B 
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
         binding.setVariable(bindResId, viewModel)
-
     }
 
     /**

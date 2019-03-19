@@ -16,7 +16,6 @@ class MainActivity : BaseActivity<com.example.moviesapp.databinding.ActivityMain
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val host: NavHostFragment = supportFragmentManager
-                .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+
     }
 }
