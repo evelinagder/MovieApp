@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.BR
 import com.example.moviesapp.R
 import com.example.moviesapp.app.recyclerview.MoviesAdapter
@@ -31,10 +32,9 @@ class HomeFragment : BaseFragment<com.example.moviesapp.databinding.FragmentHome
         viewModel.getListTrigger.value = true
         viewModel.moviesResponse.observe(viewLifecycleOwner, Observer {
             if (it.status == Status.SUCCESS) {
-                val moviesRusult = it.data as KidsMoviesResponse
-                binding.moviesRecycler.adapter = MoviesAdapter(moviesRusult.results)
+                val moviesResult = it.data
+                binding.moviesRecycler.adapter = MoviesAdapter(moviesResult?.results)
             }
         })
-
     }
 }

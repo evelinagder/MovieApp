@@ -14,7 +14,7 @@ import com.example.service.model.Movie
 
 const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w185"
 
-class MoviesAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -23,10 +23,12 @@ class MoviesAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movi
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.update(movies[position])
+        movies?.let {
+            holder.update(movies[position])
+        }
     }
 
-    override fun getItemCount(): Int = movies.size
+    override fun getItemCount(): Int = movies?.size ?: 0
 
 
     class MovieViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
