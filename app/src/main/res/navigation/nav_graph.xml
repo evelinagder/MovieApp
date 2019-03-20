@@ -10,8 +10,16 @@
               android:label="HomeFragment"
               tools:layout="@layout/fragment_home">
         <action android:id="@+id/action_homeFragment_to_placeholder"
-                app:destination="@id/detailsFragment"/>
+                app:destination="@id/detailsFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment android:id="@+id/detailsFragment" android:label="MovieDetailsFragment"
-              android:name="com.example.moviesapp.app.MovieDetailsFragment"/>
+    <fragment android:id="@+id/detailsFragment"
+              android:label="MovieDetailsFragment"
+              android:name="com.example.moviesapp.app.MovieDetailsFragment">
+        <argument android:name="movie"
+                  app:argType="com.example.service.model.Movie"/>
+    </fragment>
 </navigation>

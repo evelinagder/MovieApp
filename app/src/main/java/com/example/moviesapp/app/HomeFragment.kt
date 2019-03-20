@@ -38,7 +38,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>() 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewModel.getListTrigger.value = true
     }
 }

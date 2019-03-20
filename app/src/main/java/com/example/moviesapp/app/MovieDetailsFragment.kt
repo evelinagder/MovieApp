@@ -18,7 +18,9 @@ class MovieDetailsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-          // todo navigation safe arguments
+        arguments?.let {
+            val movie = MovieDetailsFragmentArgs.fromBundle(it).movie
+        }
     }
 
 }

@@ -10,6 +10,7 @@ import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
+import com.example.moviesapp.app.HomeFragmentDirections
 import com.example.moviesapp.databinding.ItemMovieBinding
 import com.example.service.model.Movie
 
@@ -35,15 +36,6 @@ class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<Mov
 
     class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        private val options = navOptions {
-            anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
-                popEnter = R.anim.slide_in_left
-                popExit = R.anim.slide_out_right
-            }
-        }
-
         fun update(movie: Movie?) {
 
             binding.itemMovieTitle.text = movie?.title
@@ -51,7 +43,11 @@ class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<Mov
                 .load(BASE_IMAGE_URL + movie?.posterUrl)
                 .into(binding.itemMovieImage)
             binding.root.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_placeholder, null, options)
+                //pass the movie as safeArgs to DetailsFragment
+                movie?.let { movie ->
+                    val navigationDirection = HomeFragmentDirections.actionHomeFragmentToPlaceholder(movie)
+                    Navigation.findNavController(it).navigate(navigationDirection)
+                }
             }
         }
     }
