@@ -28,7 +28,7 @@
         <TextView android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/details_description"
-                  android:text="@{detailsFragmentVM.movieDescription"
+                  android:text="@{detailsFragmentVM.movieDescription}"
                   app:layout_constraintTop_toBottomOf="@id/details_title"
                   android:padding="10dp"/>
 
