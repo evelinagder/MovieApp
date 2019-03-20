@@ -14,7 +14,7 @@ import com.example.moviesapp.app.HomeFragmentDirections
 import com.example.moviesapp.databinding.ItemMovieBinding
 import com.example.service.model.Movie
 
-const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w185"
+
 
 class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
@@ -40,7 +40,7 @@ class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<Mov
 
             binding.itemMovieTitle.text = movie?.title
             Glide.with(binding.itemMovieImage.context)
-                .load(BASE_IMAGE_URL + movie?.posterUrl)
+                .load(movie?.posterImageUrl)
                 .into(binding.itemMovieImage)
             binding.root.setOnClickListener {
                 //pass the movie as safeArgs to DetailsFragment
