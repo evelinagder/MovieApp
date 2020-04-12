@@ -6,7 +6,8 @@ import com.example.moviesapp.R
 import com.example.moviesapp.BR
 import com.example.moviesapp.view.BaseActivity
 
-class MainActivity : BaseActivity<com.example.moviesapp.databinding.ActivityMainBinding, MainActivityViewModel> (){
+class MainActivity :
+    BaseActivity<com.example.moviesapp.databinding.ActivityMainBinding, MainActivityViewModel>() {
 
     override fun getViewModelResId(): Int = BR.mainActivityVM
 

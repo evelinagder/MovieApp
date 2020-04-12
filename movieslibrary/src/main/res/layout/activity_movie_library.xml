@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="mainActivityVM"
-            type="com.example.moviesapp.app.MainActivityViewModel" />
-    </data>
 
+        <variable
+            name="movieLibraryActivityVM"
+            type="com.example.movieslibrary.MovieLibraryActivityViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_container"

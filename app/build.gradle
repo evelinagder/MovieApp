@@ -5,11 +5,11 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.example.moviesapp"
-        minSdkVersion 17
-        targetSdkVersion 28
+        minSdkVersion 23
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -27,18 +27,23 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    viewBinding.enabled = true
+
+    dynamicFeatures = [":movieslibrary"]
+
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(path: ':service')
+    implementation project(path: ':service')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-rc02'
+
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     // Glide image library
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 
     kapt rootProject.ext.dependencies.dataBindingCompiler
 

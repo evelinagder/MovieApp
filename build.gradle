@@ -4,8 +4,8 @@ buildscript {
 
     ext {
         dependencyVersions = [
-                kotlinVersion      : '1.3.21',
-                compiler_version   : '3.1.3',
+                kotlinVersion      : '1.3.70',
+                compiler_version   : '3.6.2',
 
                 lifecycle          : '2.0.0',
                 design             : '1.0.0',
@@ -13,7 +13,7 @@ buildscript {
                 junitVersion       : '4.12',
                 testRunnerVersion  : '1.1.0-alpha4',
                 espressoCoreVersion: '3.1.0-alpha4',
-                navigationVersion  : '1.0.0-alpha11'
+                navigationVersion  : '2.3.0-alpha04'
         ]
 
         dependencies = [
@@ -41,10 +41,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.6.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${dependencyVersions.kotlinVersion}"
         classpath "com.android.tools.build:gradle:${dependencyVersions.compiler_version}"
-        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:${dependencyVersions.navigationVersion}"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${dependencyVersions.navigationVersion}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

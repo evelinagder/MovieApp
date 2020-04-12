@@ -1,1 +1,2 @@
 include ':app', ':service'
+include ':movieslibrary'
