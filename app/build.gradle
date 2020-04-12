@@ -29,7 +29,7 @@ android {
     }
     viewBinding.enabled = true
 
-    dynamicFeatures = [":movieslibrary"]
+    dynamicFeatures = [":movieslibrary", ":newsfeed"]
 
 
 }
