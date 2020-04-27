@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:orientation="vertical"
+        android:background="@color/colorPrimaryTransparentLight"
         android:padding="15dp">
 
     </androidx.recyclerview.widget.RecyclerView>
