@@ -5,6 +5,7 @@ import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.moviesapp.BR
 import com.example.moviesapp.R
 import com.example.moviesapp.view.BaseActivity
@@ -28,6 +29,7 @@ class MainActivity :
 
    private fun setUpNavigation() {
         val bottomNavigationView = findViewById<View>(R.id.bottom_nav) as BottomNavigationView
+       bottomNavigationView.setupWithNavController( findNavController(R.id.nav_host_fragment))
         NavigationUI.setupWithNavController(
             bottomNavigationView,
             findNavController(R.id.nav_host_fragment)
