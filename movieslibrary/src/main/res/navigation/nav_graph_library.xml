@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragmentLibrary">
-    <fragment
-        android:id="@+id/libraryFragment"
-        android:name="com.example.movieslibrary.LibraryFragment"
-        android:label="LibraryFragment" />
-    <fragment
-        android:id="@+id/homeFragmentLibrary"
-        android:name="com.example.movieslibrary.LibraryFragmentHome"
-        android:label="LibraryFragmentHome" >
-        <action
-            android:id="@+id/action_homeFragment2_to_libraryFragment"
-            app:destination="@id/libraryFragment" />
-    </fragment>
+<navigation
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	app:moduleName="movieslibrary"
+	app:startDestination="@id/homeFragmentLibrary">
+	<fragment
+		android:id="@+id/libraryFragment"
+		android:name="com.example.movieslibrary.LibraryFragment"
+		android:label="LibraryFragment" />
+	<fragment
+		android:id="@+id/homeFragmentLibrary"
+		android:name="com.example.movieslibrary.LibraryFragmentHome"
+		android:label="LibraryFragmentHome">
+		<action
+			android:id="@+id/action_homeFragment2_to_libraryFragment"
+			app:destination="@id/libraryFragment" />
+	</fragment>
 </navigation>

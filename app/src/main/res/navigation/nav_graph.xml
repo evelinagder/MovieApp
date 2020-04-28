@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/homeFragment">
+<navigation android:id="@+id/nav_graph"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	app:startDestination="@id/homeFragment">
 
 
-    <fragment android:id="@+id/homeFragment"
-              android:name="com.example.moviesapp.app.HomeFragment"
-              android:label="HomeFragment"
-              tools:layout="@layout/fragment_home">
-        <action android:id="@+id/action_homeFragment_to_placeholder"
-                app:destination="@id/detailsFragment"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"/>
-    </fragment>
-    <fragment android:id="@+id/detailsFragment"
-              android:label="MovieDetailsFragment"
-              android:name="com.example.moviesapp.app.MovieDetailsFragment">
-        <argument android:name="movie"
-                  app:argType="com.example.service.model.Movie"/>
-    </fragment>
+	<fragment
+		android:id="@+id/homeFragment"
+		android:name="com.example.moviesapp.app.HomeFragment"
+		android:label="HomeFragment"
+		tools:layout="@layout/fragment_home">
+		<action
+			android:id="@+id/action_homeFragment_to_placeholder"
+			app:destination="@id/detailsFragment"
+			app:enterAnim="@anim/slide_in_right"
+			app:exitAnim="@anim/slide_out_left"
+			app:popEnterAnim="@anim/slide_in_left"
+			app:popExitAnim="@anim/slide_out_right" />
+	</fragment>
+	<fragment
+		android:id="@+id/detailsFragment"
+		android:name="com.example.moviesapp.app.MovieDetailsFragment"
+		android:label="MovieDetailsFragment">
+		<argument
+			android:name="movie"
+			app:argType="com.example.service.model.Movie" />
+	</fragment>
+
+	<include-dynamic
+	android:id="@+id/nav_graph_news"
+	app:moduleName="newsfeed"
+	app:graphResName="nav_graph_news"
+	app:graphPackage="com.example.moviesapp.newsfeed" />
+
+	<include-dynamic
+		android:id="@+id/nav_graph_library"
+		app:moduleName="movieslibrary"
+		app:graphResName="nav_graph_library"
+		app:graphPackage="com.example.moviesapp.movieslibrary" />
+
+	<include-dynamic
+		android:id="@+id/nav_graph_live_tv"
+		app:moduleName="missingmodule"
+		app:graphResName="nav_graph_live_tv"
+		app:graphPackage="com.example.moviesapp.missingmodule" />
+
 </navigation>
