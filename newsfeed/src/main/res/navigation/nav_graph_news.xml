@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-    app:startDestination="@id/newsFeedHomeFragment">
-    <fragment
-        android:id="@+id/newsFeedHomeFragment"
-        android:name="com.example.newsfeed.NewsFeedHomeFragment"
-        android:label="NewsFeedHomeFragment" >
-        <action
-            android:id="@+id/action_newsFeedHomeFragment_to_newsFeedFragment"
-            app:destination="@id/newsFeedFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsFeedFragment"
-        android:name="com.example.newsfeed.NewsFeedFragment"
-        android:label="NewsFeedFragment" />
+<navigation
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	app:moduleName="newsfeed"
+	app:startDestination="@id/newsFeedHomeFragment">
+	<fragment
+		android:id="@+id/newsFeedHomeFragment"
+		app:moduleName="newsfeed"
+		android:name="com.example.newsfeed.NewsFeedHomeFragment"
+		android:label="NewsFeedHomeFragment">
+		<action
+			android:id="@+id/action_newsFeedHomeFragment_to_newsFeedFragment"
+			app:destination="@id/newsFeedFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/newsFeedFragment"
+		app:moduleName="newsfeed"
+		android:name="com.example.newsfeed.NewsFeedFragment"
+		android:label="NewsFeedFragment" />
 </navigation>

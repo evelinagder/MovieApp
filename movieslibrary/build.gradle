@@ -35,6 +35,7 @@ dependencies {
     // Navigation
     implementation rootProject.ext.dependencies.navigationFragment
     implementation rootProject.ext.dependencies.navigationUi
+    implementation rootProject.ext.dependencies.dynamicFeaturesNavigation
 
     //Design libs
     implementation rootProject.ext.dependencies.design
