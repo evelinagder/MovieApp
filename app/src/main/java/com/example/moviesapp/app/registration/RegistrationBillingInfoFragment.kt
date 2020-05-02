@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.moviesapp.R
+import com.example.moviesapp.app.registration.RegistrationViewModel.Companion.NAVIGATION_STEP_HOME
 import kotlinx.android.synthetic.main.fragment_billing_info.*
 
 class RegistrationBillingInfoFragment : Fragment() {
@@ -31,9 +32,10 @@ class RegistrationBillingInfoFragment : Fragment() {
             viewLifecycleOwner,
             Observer { navigationStatus: String ->
                 if (navigationStatus == RegistrationViewModel.NAVIGATION_STEP_DONE) {
+                    //We use Global Action to navigate from the nested graph
                     Navigation.findNavController(view)
-                        //We use Global Action to navigate from the nested graph
                         .navigate(R.id.action_global_homeFragment)
+                    viewModel.navigationStageLiveData.value = NAVIGATION_STEP_HOME
                 }
             })
 

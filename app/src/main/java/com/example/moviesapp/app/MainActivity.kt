@@ -33,8 +33,10 @@ class MainActivity :
         //listen for registration done and show bottom navigation
         val viewModel: RegistrationViewModel by viewModels()
         viewModel.navigationStageLiveData.observe(this, Observer {
-            if (it == RegistrationViewModel.NAVIGATION_STEP_DONE) {
+            if (it == RegistrationViewModel.NAVIGATION_STEP_HOME) {
                 bottom_nav.visibility = View.VISIBLE
+                //This way we don`t go to registration start destination when we select Home tab
+                (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.homeFragment)
             }
         })
 

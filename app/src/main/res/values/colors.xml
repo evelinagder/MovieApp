@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">@color/color_white</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#916CA5</color>
     <color name="color_white">#F8FAF9</color>
     <color name="colorPrimaryTransparent">#CB009688</color>
     <color name="colorPrimaryTransparentLight">#B66A9F98</color>
+    <color name="colorBottomBAr">#FB56817C</color>
     <color name="movie_title_background">@color/colorPrimary</color>
     <color name="registration_background">@color/colorAccent</color>
 </resources>

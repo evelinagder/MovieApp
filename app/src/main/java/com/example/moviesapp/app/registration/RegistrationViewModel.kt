@@ -39,5 +39,6 @@ class RegistrationViewModel : ViewModel() {
         const val NAVIGATION_STEP_USERNAME = "username"
         const val NAVIGATION_STEP_AGE = "age"
         const val NAVIGATION_STEP_DONE = "done"
+        const val NAVIGATION_STEP_HOME = "home"
     }
 }
