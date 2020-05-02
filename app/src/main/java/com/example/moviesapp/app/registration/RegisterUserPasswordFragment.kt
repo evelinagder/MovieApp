@@ -1,25 +1,45 @@
 package com.example.moviesapp.app.registration
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.example.moviesapp.BR
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.navGraphViewModels
 import com.example.moviesapp.R
-import com.example.moviesapp.databinding.FragmentUsernameBinding
-import com.example.moviesapp.view.BaseFragment
+import com.example.moviesapp.app.registration.RegistrationViewModel.Companion.NAVIGATION_STEP_USERNAME
+import kotlinx.android.synthetic.main.fragment_username.*
 
-class RegisterUserPasswordFragment :
-    BaseFragment<FragmentUsernameBinding, RegistrationViewModel>() {
+class RegisterUserPasswordFragment : Fragment() {
 
-
-    override fun getViewModelResId(): Int = BR.registrationFragmentVM
-
-    override fun getLayoutResId(): Int = R.layout.fragment_username
-
-    override fun getViewModelClass(): Class<RegistrationViewModel> =
-        RegistrationViewModel::class.java
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_username, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel: RegistrationViewModel by navGraphViewModels(R.id.navigation_reg)
+
+        viewModel.navigationStageLiveData.observe(
+            viewLifecycleOwner,
+            Observer { navigationStatus: String ->
+                if (navigationStatus == NAVIGATION_STEP_USERNAME) {
+                    Navigation.findNavController(view).navigate(R.id.go_to_age_fragment_action)
+                }
+            })
+
+        button_registration_next_username.setOnClickListener {
+            viewModel.addUserNamePassword(
+                username_edit_text.text.toString(),
+                password_edit_text.text.toString()
+            )
+        }
     }
 }
