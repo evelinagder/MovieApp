@@ -35,7 +35,6 @@ class RegistrationViewModel : ViewModel() {
         Log.d("EVAA ", "Name " + user.userName)
     }
 
-
     companion object {
         const val NAVIGATION_STEP_USERNAME = "username"
         const val NAVIGATION_STEP_AGE = "age"

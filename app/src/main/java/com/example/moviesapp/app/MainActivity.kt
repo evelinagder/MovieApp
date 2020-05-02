@@ -1,9 +1,7 @@
 package com.example.moviesapp.app
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.lifecycle.Observer
@@ -32,13 +30,15 @@ class MainActivity :
         super.onCreate(savedInstanceState)
         setUpNavigation()
 
-        val viewModel: RegistrationViewModel by viewModels() //TODO navigationStageLiveData is not notified
-
+        //listen for registration done and show bottom navigation
+        val viewModel: RegistrationViewModel by viewModels()
         viewModel.navigationStageLiveData.observe(this, Observer {
             if (it == RegistrationViewModel.NAVIGATION_STEP_DONE) {
                 bottom_nav.visibility = View.VISIBLE
             }
         })
+
+        //check if the user is registered and if not change the destination dynamically
         if (!viewModel.isUserCompletedRegistration) {
             (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.navigation_reg)
             bottom_nav.visibility = View.GONE
@@ -56,9 +56,13 @@ class MainActivity :
         )
     }
 
+    /**
+     * This ext functions changes the start Destination dynamically
+     */
     private fun NavHostFragment.changeStartDestination(@IdRes startDestination: Int) {
         val graph = navController.graph
         graph.startDestination = startDestination
         navController.graph = graph
     }
+
 }
