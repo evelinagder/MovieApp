@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -36,9 +37,19 @@ class RegisterUserPasswordFragment : Fragment() {
             })
 
         button_registration_next_username.setOnClickListener {
+            val username = username_edit_text.text.toString()
+            val pass = password_edit_text.text.toString()
+            if (username.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Username and Password cannot be empty!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
             viewModel.addUserNamePassword(
-                username_edit_text.text.toString(),
-                password_edit_text.text.toString()
+                username,
+                pass
             )
         }
     }

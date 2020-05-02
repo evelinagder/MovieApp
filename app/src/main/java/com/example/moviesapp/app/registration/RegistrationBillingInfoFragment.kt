@@ -10,16 +10,16 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.navGraphViewModels
 import com.example.moviesapp.R
-import kotlinx.android.synthetic.main.fragment_age.*
+import kotlinx.android.synthetic.main.fragment_billing_info.*
 
-class RegistrationAgeCountryFragment : Fragment() {
+class RegistrationBillingInfoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_age, container, false)
+        return inflater.inflate(R.layout.fragment_billing_info, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,27 +30,28 @@ class RegistrationAgeCountryFragment : Fragment() {
         viewModel.navigationStageLiveData.observe(
             viewLifecycleOwner,
             Observer { navigationStatus: String ->
-                if (navigationStatus == RegistrationViewModel.NAVIGATION_STEP_AGE) {
+                if (navigationStatus == RegistrationViewModel.NAVIGATION_STEP_DONE) {
                     Navigation.findNavController(view)
-                        .navigate(R.id.action_go_to_billingInfoFragment)
+                        //We use Global Action to navigate from the nested graph
+                        .navigate(R.id.action_global_homeFragment)
                 }
             })
 
-        button_registration_next_age.setOnClickListener {
-            val ageValue: String = age_edit_text.text.toString()
-            val country = country_edit_text.text.toString()
-            if (ageValue.isEmpty() || country.isEmpty()) {
+        button_registration_done.setOnClickListener {
+            val cardNumberValue: String = card_number_edit_text.text.toString()
+            val cardName = card_name_text_view.text.toString()
+            if (cardNumberValue.isEmpty() || cardName.isEmpty()) {
                 Toast.makeText(
                     view.context,
-                    "Age and Country cannot be empty!",
+                    "Card number and Card name cannot be empty!",
                     Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
             }
-            val age = ageValue.toInt()
-            viewModel.addAgeAndCountry(
-                age,
-                country
+            val cardNumber = cardNumberValue.toInt()
+            viewModel.addBillingInfo(
+                cardNumber,
+                cardName
             )
         }
     }

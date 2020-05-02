@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorAccent">
 
     <TextView
         android:id="@+id/username_text_view"
@@ -34,9 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password"
+        android:layout_marginTop="20dp"
         android:textColor="@color/color_white"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
@@ -49,7 +51,9 @@
         android:background="@drawable/movie_list_background"
         android:hint="Enter username"
         android:padding="10dp"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_text_view" />
 
@@ -60,6 +64,10 @@
         android:layout_marginTop="50dp"
         android:text="next"
         android:textAllCaps="true"
+        android:textSize="25sp"
+        android:padding="20dp"
+        android:textColor="@color/color_white"
+        android:background="@color/colorPrimaryTransparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />

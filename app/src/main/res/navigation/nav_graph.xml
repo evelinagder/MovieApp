@@ -61,20 +61,20 @@
         </fragment>
         <fragment
             android:id="@+id/billingInfoFragment"
-            android:name="com.example.moviesapp.app.registration.BillingInfoFragment"
+            android:name="com.example.moviesapp.app.registration.RegistrationBillingInfoFragment"
             android:label="BillingInfoFragment">
-            <action
-                android:id="@+id/action_billingInfoFragment_to_homeFragment"
-                app:destination="@id/homeFragment" />
         </fragment>
         <fragment
             android:id="@+id/registrationAgeCountryFragment"
             android:name="com.example.moviesapp.app.registration.RegistrationAgeCountryFragment"
             android:label="RegistrationAgeCountryFragment">
             <action
-                android:id="@+id/action_registrationAgeCountryFragment_to_billingInfoFragment"
+                android:id="@+id/action_go_to_billingInfoFragment"
                 app:destination="@id/billingInfoFragment" />
         </fragment>
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment" />
     </navigation>
 
 

@@ -1,5 +1,6 @@
 package com.example.moviesapp.app.registration
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.service.model.User
@@ -7,9 +8,9 @@ import com.example.service.model.User
 class RegistrationViewModel : ViewModel() {
 
     private val user = User()
-    var isUserCompletedRegistration = false
+    var isUserCompletedRegistration = false //TODO move to shared preffs
 
-    //TODO Observe the vents and trigger the navigation!
+    //we use live data to trugger navigation changes in the fragments
     val navigationStageLiveData = MutableLiveData<String>()
 
     fun addUserNamePassword(username: String, password: String) {
@@ -29,6 +30,9 @@ class RegistrationViewModel : ViewModel() {
         user.cardHolderName = cardHolderName
         isUserCompletedRegistration = true
         navigationStageLiveData.value = NAVIGATION_STEP_DONE
+
+        //SHOW that we have all the saved info
+        Log.d("EVAA ", "Name " + user.userName)
     }
 
 

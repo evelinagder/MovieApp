@@ -7,4 +7,5 @@
     <color name="colorPrimaryTransparent">#CB009688</color>
     <color name="colorPrimaryTransparentLight">#B66A9F98</color>
     <color name="movie_title_background">@color/colorPrimary</color>
+    <color name="registration_background">@color/colorAccent</color>
 </resources>

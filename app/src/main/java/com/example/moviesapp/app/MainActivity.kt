@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -31,11 +32,17 @@ class MainActivity :
         super.onCreate(savedInstanceState)
         setUpNavigation()
 
-        val viewModel: RegistrationViewModel by viewModels()
-        //if (!viewModel.isUserCompletedRegistration) {
+        val viewModel: RegistrationViewModel by viewModels() //TODO navigationStageLiveData is not notified
+
+        viewModel.navigationStageLiveData.observe(this, Observer {
+            if (it == RegistrationViewModel.NAVIGATION_STEP_DONE) {
+                bottom_nav.visibility = View.VISIBLE
+            }
+        })
+        if (!viewModel.isUserCompletedRegistration) {
             (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.navigation_reg)
             bottom_nav.visibility = View.GONE
-       // }
+        }
     }
 
     //TODO change live tv icon with appropriate one and
