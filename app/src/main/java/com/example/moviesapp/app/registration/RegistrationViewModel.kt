@@ -32,7 +32,7 @@ class RegistrationViewModel : ViewModel() {
         navigationStageLiveData.value = NAVIGATION_STEP_DONE
 
         //SHOW that we have all the saved info
-        Log.d("EVAA ", "Name " + user.userName)
+        Log.d("Movies", "Name " + user.userName)
     }
 
     companion object {
