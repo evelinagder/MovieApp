@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.AnyRes
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -39,11 +40,16 @@ abstract class BaseFragment<B, VM> : Fragment()
         return binding.root
     }
 
-    /**
-     * @return the view model identifier for the given view
-     */
-    @AnyRes
-    protected abstract fun getViewModelResId(): Int
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		setActionBarTitle()
+	}
+
+	/**
+	 * @return the view model identifier for the given view
+	 */
+	@AnyRes
+	protected abstract fun getViewModelResId(): Int
 
     /**
      * @return the layout resource identifier for the given view
@@ -53,11 +59,16 @@ abstract class BaseFragment<B, VM> : Fragment()
 
     protected abstract fun getViewModelClass(): Class<VM>
 
-    inline fun <reified T : ViewModel> Fragment.getViewModel(noinline creator: (() -> T)? = null): T {
-        return if (creator == null)
-            ViewModelProviders.of(this).get(T::class.java)
-        else
-            ViewModelProviders.of(this, BaseViewModelFactory(creator)).get(T::class.java)
-    }
+	protected abstract fun getActionBarTitle(): String?
 
+	private fun setActionBarTitle() {
+		(activity as AppCompatActivity).supportActionBar?.title = getActionBarTitle()
+	}
+}
+
+inline fun <reified T : ViewModel> Fragment.getViewModel(noinline creator: (() -> T)? = null): T {
+	return if (creator == null)
+		ViewModelProviders.of(this).get(T::class.java)
+	else
+		ViewModelProviders.of(this, BaseViewModelFactory(creator)).get(T::class.java)
 }

@@ -13,6 +13,8 @@ class LibraryFragmentHome : BaseFragment<com.example.movieslibrary.databinding.F
 
     override fun getViewModelClass(): Class<LibraryFragmentViewModel> = LibraryFragmentViewModel::class.java
 
+	override fun getActionBarTitle() = getString(R.string.title_movies_library)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

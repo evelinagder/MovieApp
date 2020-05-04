@@ -12,6 +12,8 @@ class NewsFeedHomeFragment : BaseFragment<com.example.newsfeed.databinding.Fragm
 
     override fun getViewModelClass(): Class<NewsFeedFragmentViewModel> = NewsFeedFragmentViewModel::class.java
 
+	override fun getActionBarTitle() = getString(R.string.news_feed_title)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
