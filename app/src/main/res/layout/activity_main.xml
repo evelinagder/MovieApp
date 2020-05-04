@@ -10,12 +10,17 @@
             type="com.example.moviesapp.app.MainActivityViewModel" />
     </data>
 
+	<androidx.drawerlayout.widget.DrawerLayout
+		android:id="@+id/drawer_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fitsSystemWindows="false">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/fragment_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			tools:context=".MainActivity">
 
         <fragment
             android:id="@+id/nav_host_fragment"
@@ -38,5 +43,14 @@
             android:background="@color/colorBottomBAr"
             app:menu="@menu/bottom_menu" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<com.google.android.material.navigation.NavigationView
+			android:id="@+id/nav_view"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_gravity="start"
+			android:fitsSystemWindows="true"
+			app:menu="@menu/nav_menu" />
+	</androidx.drawerlayout.widget.DrawerLayout>
 </layout>

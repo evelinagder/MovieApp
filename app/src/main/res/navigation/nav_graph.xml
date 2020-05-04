@@ -78,4 +78,10 @@
     </navigation>
 
 
+	<fragment
+		android:id="@+id/aboutUsFragment"
+		android:name="com.example.moviesapp.app.AboutUsFragment"
+		android:label="AboutUsFragment"
+		tools:layout="@layout/fragment_about_us"/>
+
 </navigation>
