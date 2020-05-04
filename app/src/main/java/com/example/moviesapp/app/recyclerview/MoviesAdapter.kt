@@ -41,9 +41,6 @@ class MoviesAdapter(private val movies: List<Movie>?) :
 
             binding.itemMovieTitle.text = movie?.title
             binding.itemRating.text = "Rating ${movie?.rating}"
-//            Glide.with(binding.itemMovieImage.context)
-//                .load(movie?.posterImageUrl)
-//                .into(binding.itemMovieImage)
             binding.root.setOnClickListener {
                 //pass the movie as safeArgs to DetailsFragment
                 movie?.let { movie ->
