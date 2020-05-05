@@ -2,4 +2,10 @@
     <string name="app_name">MoviesApp</string>
     <string name="title_movieslibrary">Library</string>
     <string name="title_newsfeed">News feed</string>
+	<string name="about_us_title_text">About us</string>
+	<string name="about_us_text">MoviesApp is a comprehensive and in-depth resource for finding out more about the movies, actors and filmmakers you love.\nOn MovieApp you\'ll find:\nReviews of upcoming and classic films\nIn-depth Information about your favorite movies, actors and filmmakers\nNew movies in theaters - Browse the movies playing at your local theaters and buy tickets for upcoming showings\nNow Available to Watch - Movies that are available to rent, stream or own on multiple streaming services\nRecommendations - An entire section devoted to personalized movie recommendations for you\nExplore movies by genre, mood or theme</string>
+	<string name="unregister_text">Unregister</string>
+	<string name="home_screen_title">Home</string>
+	<string name="about_us_screen_title">About us</string>
+	<string name="details_screen_title">About us</string>
 </resources>

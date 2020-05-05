@@ -26,4 +26,6 @@ class MovieDetailsFragment :
             viewModel.movieTitle.value = movie.title
         }
     }
+
+	override fun getActionBarTitle() = getString(R.string.details_screen_title)
 }
