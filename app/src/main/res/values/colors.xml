@@ -9,4 +9,5 @@
     <color name="colorBottomBAr">#FB56817C</color>
     <color name="movie_title_background">@color/colorPrimary</color>
     <color name="registration_background">@color/colorAccent</color>
+	<color name="red">#BA0000</color>
 </resources>

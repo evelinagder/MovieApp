@@ -11,11 +11,11 @@
 			android:title="@string/about_us_title_text" />
 
 		<item
-			android:id="@+id/unregister"
+			android:id="@+id/logout"
 			android:icon="@drawable/ic_unregister_24dp"
 			android:iconTint="@android:color/white"
 			android:orderInCategory="2"
-			android:title="@string/unregister_text" />
+			android:title="@string/log_out_text" />
 
 	</group>
 </menu>
