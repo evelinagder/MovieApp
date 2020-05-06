@@ -7,46 +7,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviesapp.utils.Event
 
-class LoginViewModel: ViewModel() {
+class LoginViewModel : ViewModel() {
 
-	val username = object : ObservableField<String>() {
-		override fun set(value: String?) {
-			super.set(value)
-			if (value?.isEmpty() == false) {
-				isErrorVisible.set(false)
-			}
-		}
-	}
+    val isErrorVisible = ObservableBoolean()
 
-	val password = object : ObservableField<String>() {
-		override fun set(value: String?) {
-			super.set(value)
-			if (value?.isEmpty() == false) {
-				isErrorVisible.set(false)
-			}
-		}
-	}
+    fun isLoginEnabled(username:String, password:String) =
+    isInputValid(username) && isInputValid(password)
 
-	val isErrorVisible = ObservableBoolean()
 
-	val isLoginEnabled = object : ObservableBoolean(username, password) {
-		override fun get(): Boolean {
-			return isInputValid(username.get()) && isInputValid(password.get())
-		}
-	}
+    private val _isLoginClicked = MutableLiveData<Event<Boolean>>()
+    val isLoginClicked: LiveData<Event<Boolean>>
+        get() = _isLoginClicked
 
-	private val _isLoginClicked = MutableLiveData<Event<Boolean>>()
-	val isLoginClicked: LiveData<Event<Boolean>>
-		get() = _isLoginClicked
+    private fun isInputValid(input: String?) = !input.isNullOrEmpty() && input.length >= 3
 
-	private fun isInputValid(input: String?) = !input.isNullOrEmpty() && input.length >= 3
+    fun login() {
+        _isLoginClicked.value = Event(true)
+    }
 
-	fun login(){
-		_isLoginClicked.value = Event(true)
-	}
-
-	fun clearInputFields() {
-		username.set("")
-		password.set("")
-	}
 }

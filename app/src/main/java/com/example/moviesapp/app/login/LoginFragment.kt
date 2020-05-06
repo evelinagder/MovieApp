@@ -6,6 +6,7 @@ import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -14,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.moviesapp.R
 import com.example.moviesapp.app.registration.RegistrationViewModel
+import com.example.moviesapp.utils.setVisible
 import kotlinx.android.synthetic.main.fragment_login.*
 
 const val USERNAME_PREFS_KEY = "usernameKey"
@@ -31,26 +33,42 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //show dynamic set actionbar title
         (activity as AppCompatActivity).supportActionBar?.title = null
 
         val vm: RegistrationViewModel by activityViewModels()
         val viewModel: LoginViewModel by viewModels()
-
+        wrong_credentials_tv.setVisible(false)
         viewModel.isLoginClicked.observe(viewLifecycleOwner, Observer {
             if (it.getContentIfNotHandled() == true) {
-                if (canLogin(viewModel.username.get(), viewModel.password.get())) {
+                if (canLogin(username_et.text.toString(), passcode_et.text.toString())) {
                     //We use Global Action to navigate from the nested graph
                     val navDirections = LoginFragmentDirections.actionGlobalHomeFragment()
                     Navigation.findNavController(view).navigate(navDirections)
                     vm.navigationStageLiveData.value = RegistrationViewModel.NAVIGATION_STEP_HOME
                 } else {
-                    viewModel.isErrorVisible.set(true)
-                    viewModel.clearInputFields()
+                    wrong_credentials_tv.setVisible(true)
+                    clearInputFields()
                 }
                 return@Observer
             }
         })
 
+        login_btn.setOnClickListener {
+            if (viewModel.isLoginEnabled(
+                    username_et.text.toString(),
+                    passcode_et.text.toString()
+                )
+            ) {
+                viewModel.login()
+            } else {
+                Toast.makeText(
+                    view.context,
+                    "Username and Password are not valid",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
         register_btn.setOnClickListener {
             val navDirections = LoginFragmentDirections.goToRegistration()
             Navigation.findNavController(view).navigate(navDirections)
@@ -67,5 +85,10 @@ class LoginFragment : Fragment() {
             return true
         }
         return false
+    }
+
+    private fun clearInputFields() {
+        username_et.setText("")
+        passcode_et.setText("")
     }
 }
