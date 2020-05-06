@@ -2,7 +2,6 @@ package com.example.newsfeed
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.moviesapp.view.BaseActivity
 
 class NewsFeedActivity : AppCompatActivity() {
 

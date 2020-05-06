@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-import com.example.moviesapp.view.BaseFragment
-
 class LibraryFragment :Fragment() {
 
     override fun onCreateView(
