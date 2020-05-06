@@ -16,7 +16,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			app:layout_constraintTop_toTopOf="parent"
-			android:layout_marginTop="30dp"
+			android:layout_marginTop="90dp"
 			style="@style/TitleTextStyle"
 			android:text="@string/user_name_text"/>
 

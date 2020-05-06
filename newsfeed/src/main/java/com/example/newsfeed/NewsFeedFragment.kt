@@ -1,26 +1,18 @@
 package com.example.newsfeed
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.example.moviesapp.view.BaseFragment
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
-class NewsFeedFragment : BaseFragment<com.example.newsfeed.databinding.FragmentNewsfeedBinding, NewsFeedFragmentViewModel>() {
+class NewsFeedFragment : Fragment() {
 
-    override fun getViewModelResId(): Int = BR.newsfeedFragmentVM
-
-    override fun getLayoutResId(): Int = R.layout.fragment_newsfeed
-
-    override fun getViewModelClass(): Class<NewsFeedFragmentViewModel> = NewsFeedFragmentViewModel::class.java
-
-	override fun getActionBarTitle() = getString(R.string.news_feed_title)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //  viewModel.getListTrigger.value = true
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_newsfeed, container, false)
     }
 }

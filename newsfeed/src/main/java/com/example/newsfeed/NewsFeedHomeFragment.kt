@@ -1,26 +1,30 @@
 package com.example.newsfeed
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.example.moviesapp.view.BaseFragment
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_news_feed_home.*
 
-class NewsFeedHomeFragment : BaseFragment<com.example.newsfeed.databinding.FragmentNewsFeedHomeBinding, NewsFeedFragmentViewModel>() {
+class NewsFeedHomeFragment : Fragment() {
 
-    override fun getViewModelResId(): Int = BR.newsfeedFragmentVM
-
-    override fun getLayoutResId(): Int = R.layout.fragment_news_feed_home
-
-    override fun getViewModelClass(): Class<NewsFeedFragmentViewModel> = NewsFeedFragmentViewModel::class.java
-
-	override fun getActionBarTitle() = getString(R.string.news_feed_title)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_news_feed_home, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //  viewModel.getListTrigger.value = true
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.news_feed_title)
+        newsfeed_button.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFeedHomeFragment_to_newsFeedFragment)
+        }
     }
 }

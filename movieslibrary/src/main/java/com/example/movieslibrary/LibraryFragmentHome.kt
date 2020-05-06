@@ -1,27 +1,30 @@
 package com.example.movieslibrary
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.example.moviesapp.view.BaseFragment
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_library_home.*
 
-class LibraryFragmentHome : BaseFragment<com.example.movieslibrary.databinding.FragmentLibraryHomeBinding, LibraryFragmentViewModel>() {
+class LibraryFragmentHome : Fragment() {
 
-
-    override fun getViewModelResId(): Int = BR.libraryFragmentVM
-
-    override fun getLayoutResId(): Int = R.layout.fragment_library_home
-
-    override fun getViewModelClass(): Class<LibraryFragmentViewModel> = LibraryFragmentViewModel::class.java
-
-	override fun getActionBarTitle() = getString(R.string.title_movies_library)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_library_home, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //  viewModel.getListTrigger.value = true
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.title_movies_library)
+        library_button.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragmentLibrary_to_libraryFragment)
+        }
     }
 }

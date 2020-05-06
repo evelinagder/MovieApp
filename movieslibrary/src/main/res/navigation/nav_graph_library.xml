@@ -13,8 +13,9 @@
 		android:id="@+id/homeFragmentLibrary"
 		android:name="com.example.movieslibrary.LibraryFragmentHome"
 		android:label="LibraryFragmentHome">
+
 		<action
-			android:id="@+id/action_homeFragment2_to_libraryFragment"
+			android:id="@+id/action_homeFragmentLibrary_to_libraryFragment"
 			app:destination="@id/libraryFragment" />
 	</fragment>
 </navigation>

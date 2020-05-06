@@ -1,28 +1,20 @@
 package com.example.movieslibrary
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
 import com.example.moviesapp.view.BaseFragment
 
-class LibraryFragment : BaseFragment<com.example.movieslibrary.databinding.FragmentLibraryHomeBinding, LibraryFragmentViewModel>() {
+class LibraryFragment :Fragment() {
 
-
-    override fun getViewModelResId(): Int = BR.libraryFragmentVM
-
-    override fun getLayoutResId(): Int = R.layout.fragment_library
-
-    override fun getViewModelClass(): Class<LibraryFragmentViewModel> = LibraryFragmentViewModel::class.java
-
-	override fun getActionBarTitle() = getString(R.string.title_movies_library)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-      //  viewModel.getListTrigger.value = true
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_library, container, false)
     }
 }
