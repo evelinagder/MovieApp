@@ -5,13 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.service.model.User
 
-class RegistrationViewModel : ViewModel() {
+open class RegistrationViewModel : ViewModel() {
 
     private val user = User()
-    var isUserCompletedRegistration = false //TODO move to shared preffs
 
-    //we use live data to trugger navigation changes in the fragments
+    //we use live data to trigger navigation changes in the fragments
     val navigationStageLiveData = MutableLiveData<String>()
+
+	fun getUsername() = user.userName
+	fun getUserPass() = user.password
 
     fun addUserNamePassword(username: String, password: String) {
         user.userName = username
@@ -28,7 +30,6 @@ class RegistrationViewModel : ViewModel() {
     fun addBillingInfo(cardNumber: Int, cardHolderName: String) {
         user.cardNumber = cardNumber
         user.cardHolderName = cardHolderName
-        isUserCompletedRegistration = true
         navigationStageLiveData.value = NAVIGATION_STEP_DONE
 
         //SHOW that we have all the saved info

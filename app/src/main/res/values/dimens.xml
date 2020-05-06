@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="et_width">300dp</dimen>
+	<dimen name="et_height">60dp</dimen>
+	<dimen name="et_padding">10dp</dimen>
+</resources>

@@ -1,6 +1,8 @@
 package com.example.moviesapp.app.registration
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +12,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.moviesapp.R
-import com.example.moviesapp.app.registration.RegistrationViewModel.Companion.NAVIGATION_STEP_HOME
+import com.example.moviesapp.app.login.PASSWORD_PREFS_KEY
+import com.example.moviesapp.app.login.USERNAME_PREFS_KEY
 import kotlinx.android.synthetic.main.fragment_billing_info.*
 
 class RegistrationBillingInfoFragment : Fragment() {
@@ -32,10 +35,8 @@ class RegistrationBillingInfoFragment : Fragment() {
             viewLifecycleOwner,
             Observer { navigationStatus: String ->
                 if (navigationStatus == RegistrationViewModel.NAVIGATION_STEP_DONE) {
-                    //We use Global Action to navigate from the nested graph
-                    Navigation.findNavController(view)
-                        .navigate(R.id.action_global_homeFragment)
-                    viewModel.navigationStageLiveData.value = NAVIGATION_STEP_HOME
+					val navDirections = RegistrationBillingInfoFragmentDirections.toLoginAction()
+					Navigation.findNavController(view).navigate(navDirections)
                 }
             })
 
@@ -55,6 +56,13 @@ class RegistrationBillingInfoFragment : Fragment() {
                 cardNumber,
                 cardName
             )
+			saveUserCredentials(viewModel.getUsername(), viewModel.getUserPass())
         }
     }
+
+	private fun saveUserCredentials(username:String?, password: String?){
+		val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+		sharedPreferences.edit().putString(USERNAME_PREFS_KEY, username).apply()
+		sharedPreferences.edit().putString(PASSWORD_PREFS_KEY, password).apply()
+	}
 }
