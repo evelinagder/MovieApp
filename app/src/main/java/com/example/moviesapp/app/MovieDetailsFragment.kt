@@ -22,10 +22,6 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title =
-            getString(R.string.details_screen_title)
-
-        val viewModel: MovieDetailsFragmentViewModel by viewModels()
 
         arguments?.let {
             val movie = MovieDetailsFragmentArgs.fromBundle(it).movie

@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.moviesapp.app.HomeFragment"
-        android:label="HomeFragment"
+        android:label="@string/home_screen_title"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_placeholder"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.moviesapp.app.MovieDetailsFragment"
-        android:label="MovieDetailsFragment">
+        android:label="@string/details_screen_title">
         <argument
             android:name="movie"
             app:argType="com.example.service.model.Movie" />
@@ -52,14 +52,14 @@
         android:id="@+id/navigation_reg"
         app:startDestination="@id/loginFragment">
 
-		<fragment
-			android:id="@+id/loginFragment"
-			android:name="com.example.moviesapp.app.login.LoginFragment"
-			android:label="LoginFragment">
-			<action
-				android:id="@+id/go_to_registration"
-				app:destination="@id/registerUserPasswordFragment" />
-		</fragment>
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.example.moviesapp.app.login.LoginFragment"
+            android:label="Login">
+            <action
+                android:id="@+id/go_to_registration"
+                app:destination="@id/registerUserPasswordFragment" />
+        </fragment>
 
         <fragment
             android:id="@+id/registerUserPasswordFragment"
@@ -73,11 +73,11 @@
             android:id="@+id/billingInfoFragment"
             android:name="com.example.moviesapp.app.registration.RegistrationBillingInfoFragment"
             android:label="BillingInfoFragment">
-			<action
-				android:id="@+id/to_login_action"
-				app:destination="@id/loginFragment"
-				app:popUpTo="@+id/loginFragment"
-				app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/to_login_action"
+                app:destination="@id/loginFragment"
+                app:popUpTo="@+id/loginFragment"
+                app:popUpToInclusive="true" />
         </fragment>
         <fragment
             android:id="@+id/registrationAgeCountryFragment"
@@ -93,10 +93,10 @@
     </navigation>
 
 
-	<fragment
-		android:id="@+id/aboutUsFragment"
-		android:name="com.example.moviesapp.app.AboutUsFragment"
-		android:label="AboutUsFragment"
-		tools:layout="@layout/fragment_about_us"/>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.moviesapp.app.AboutUsFragment"
+        android:label="@string/about_us_screen_title"
+        tools:layout="@layout/fragment_about_us" />
 
 </navigation>

@@ -9,7 +9,7 @@
 		android:id="@+id/newsFeedHomeFragment"
 		app:moduleName="newsfeed"
 		android:name="com.example.newsfeed.NewsFeedHomeFragment"
-		android:label="NewsFeedHomeFragment">
+		android:label="@string/news_feed_title">
 		<action
 			android:id="@+id/action_newsFeedHomeFragment_to_newsFeedFragment"
 			app:destination="@id/newsFeedFragment" />
@@ -18,5 +18,5 @@
 		android:id="@+id/newsFeedFragment"
 		app:moduleName="newsfeed"
 		android:name="com.example.newsfeed.NewsFeedFragment"
-		android:label="NewsFeedFragment" />
+		android:label="@string/news_feed_title" />
 </navigation>

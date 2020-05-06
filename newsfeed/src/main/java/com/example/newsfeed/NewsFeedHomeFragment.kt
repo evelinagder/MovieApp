@@ -21,8 +21,6 @@ class NewsFeedHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title =
-            getString(R.string.news_feed_title)
         newsfeed_button.setOnClickListener {
             findNavController().navigate(R.id.action_newsFeedHomeFragment_to_newsFeedFragment)
         }

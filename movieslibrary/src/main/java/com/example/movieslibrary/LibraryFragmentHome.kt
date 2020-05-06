@@ -21,8 +21,6 @@ class LibraryFragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title =
-            getString(R.string.title_movies_library)
         library_button.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragmentLibrary_to_libraryFragment)
         }

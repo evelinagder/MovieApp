@@ -8,11 +8,11 @@
 	<fragment
 		android:id="@+id/libraryFragment"
 		android:name="com.example.movieslibrary.LibraryFragment"
-		android:label="LibraryFragment" />
+		android:label="Library" />
 	<fragment
 		android:id="@+id/homeFragmentLibrary"
 		android:name="com.example.movieslibrary.LibraryFragmentHome"
-		android:label="LibraryFragmentHome">
+		android:label="@string/title_movieslibrary">
 
 		<action
 			android:id="@+id/action_homeFragmentLibrary_to_libraryFragment"
