@@ -12,7 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.navigateUp
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
                 bottom_nav.visibility = View.VISIBLE
                 //This way we don`t go to registration start destination when we select Home tab
-                (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.homeFragment)
+                changeStartDestination(R.id.homeFragment)
                 supportActionBar?.show()
                 drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             }
@@ -105,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * This ext functions changes the start Destination dynamically
      */
-    private fun NavHostFragment.changeStartDestination(@IdRes startDestination: Int) {
+    private fun changeStartDestination(@IdRes startDestination: Int) {
         val graph = navController.graph
         graph.startDestination = startDestination
         navController.graph = graph
@@ -114,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     private fun goToRegisterAndHideNavigation() {
         supportActionBar?.hide()
         drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.navigation_reg)
+        changeStartDestination(R.id.navigation_reg)
         bottom_nav.visibility = View.GONE
     }
 }
