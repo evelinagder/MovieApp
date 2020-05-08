@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.homeNavigationLiveData.observe(this, Observer {
             if (it == NAVIGATION_STEP_HOME) {
+
                 bottom_nav.visibility = View.VISIBLE
                 //This way we don`t go to registration start destination when we select Home tab
                 (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.homeFragment)

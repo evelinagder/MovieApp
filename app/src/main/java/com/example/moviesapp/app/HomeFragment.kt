@@ -34,8 +34,11 @@ class HomeFragment : Fragment() {
         val viewModel: HomeFragmentViewModel by viewModels()
 
         // val viewModelTest: RegistrationViewModel by navGraphViewModels(R.id.navigation_reg)
-        // this is going to crash -> No destination with ID 2131230944 is on the NavController's back stack
+        // this is going to crash -> No destination with ID 2131230944 is on the NavController's back
 
+        // val viewModelTest2: RegistrationViewModel by viewModels()
+        //this gives us access, but not to the same instance
+        // Log.d("TEST", "user " + viewModelTest2.getUsername())
 
         movies_recycler.layoutManager = LinearLayoutManager(this@HomeFragment.context)
         viewModel.moviesResponse.observe(viewLifecycleOwner, Observer {
