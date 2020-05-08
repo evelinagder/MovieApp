@@ -14,7 +14,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.moviesapp.R
-import com.example.moviesapp.app.registration.RegistrationViewModel
+import com.example.moviesapp.app.MainActivityViewModel
+import com.example.moviesapp.app.MainActivityViewModel.Companion.NAVIGATION_STEP_HOME
 import com.example.moviesapp.utils.setVisible
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -36,7 +37,9 @@ class LoginFragment : Fragment() {
         //show dynamic set actionbar title
         (activity as AppCompatActivity).supportActionBar?.title = null
 
-        val vm: RegistrationViewModel by activityViewModels()
+        //shared view model with activity scope
+        val activityViewModel: MainActivityViewModel by activityViewModels()
+        // view model only for the fragment
         val viewModel: LoginViewModel by viewModels()
         wrong_credentials_tv.setVisible(false)
         viewModel.isLoginClicked.observe(viewLifecycleOwner, Observer {
@@ -45,7 +48,7 @@ class LoginFragment : Fragment() {
                     //We use Global Action to navigate from the nested graph
                     val navDirections = LoginFragmentDirections.actionGlobalHomeFragment()
                     Navigation.findNavController(view).navigate(navDirections)
-                    vm.navigationStageLiveData.value = RegistrationViewModel.NAVIGATION_STEP_HOME
+                    activityViewModel.homeNavigationLiveData.value = NAVIGATION_STEP_HOME
                 } else {
                     wrong_credentials_tv.setVisible(true)
                     clearInputFields()

@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.navGraphViewModels
 import com.example.moviesapp.R
 import com.example.moviesapp.app.login.PASSWORD_PREFS_KEY
 import com.example.moviesapp.app.login.USERNAME_PREFS_KEY
@@ -29,7 +29,7 @@ class RegistrationBillingInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel: RegistrationViewModel by activityViewModels()
+        val viewModel: RegistrationViewModel by navGraphViewModels(R.id.navigation_reg)
 
         viewModel.navigationStageLiveData.observe(
             viewLifecycleOwner,

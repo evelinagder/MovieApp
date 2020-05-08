@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.navGraphViewModels
 import com.example.moviesapp.R
 import com.example.moviesapp.app.registration.RegistrationViewModel.Companion.NAVIGATION_STEP_USERNAME
 import kotlinx.android.synthetic.main.fragment_username.*
@@ -25,7 +26,7 @@ class RegisterUserPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel: RegistrationViewModel by activityViewModels()
+        val viewModel: RegistrationViewModel by navGraphViewModels(R.id.navigation_reg)
 
         viewModel.navigationStageLiveData.observe(
             viewLifecycleOwner,

@@ -19,8 +19,8 @@ import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.moviesapp.R
+import com.example.moviesapp.app.MainActivityViewModel.Companion.NAVIGATION_STEP_HOME
 import com.example.moviesapp.app.login.IS_USER_LOGGED
-import com.example.moviesapp.app.registration.RegistrationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -42,9 +42,10 @@ class MainActivity : AppCompatActivity() {
         connectNavViewWithNavController()
 
         //listen for registration done and show bottom navigation
-        val registrationViewModel: RegistrationViewModel by viewModels()
-        registrationViewModel.navigationStageLiveData.observe(this, Observer {
-            if (it == RegistrationViewModel.NAVIGATION_STEP_HOME) {
+        val viewModel: MainActivityViewModel by viewModels()
+
+        viewModel.homeNavigationLiveData.observe(this, Observer {
+            if (it == NAVIGATION_STEP_HOME) {
                 bottom_nav.visibility = View.VISIBLE
                 //This way we don`t go to registration start destination when we select Home tab
                 (nav_host_fragment as NavHostFragment).changeStartDestination(R.id.homeFragment)
