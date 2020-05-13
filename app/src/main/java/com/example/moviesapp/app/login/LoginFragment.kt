@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
             if (it.getContentIfNotHandled() == true) {
                 if (canLogin(username_et.text.toString(), passcode_et.text.toString())) {
                     //We use Global Action to navigate from the nested graph
-                    val navDirections = LoginFragmentDirections.actionGlobalHomeFragment()
+                    val navDirections = LoginFragmentDirections.actionLoginToHomeFragment()
                     Navigation.findNavController(view).navigate(navDirections)
                     activityViewModel.homeNavigationLiveData.value = NAVIGATION_STEP_HOME
                 } else {

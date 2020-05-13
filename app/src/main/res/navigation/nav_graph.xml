@@ -88,7 +88,7 @@
                 app:destination="@id/billingInfoFragment" />
         </fragment>
         <action
-            android:id="@+id/action_global_homeFragment"
+            android:id="@+id/action_login_to_homeFragment"
             app:destination="@id/homeFragment" />
     </navigation>
 
