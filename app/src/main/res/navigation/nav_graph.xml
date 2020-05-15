@@ -87,11 +87,12 @@
                 android:id="@+id/action_go_to_billingInfoFragment"
                 app:destination="@id/billingInfoFragment" />
         </fragment>
-        <action
-            android:id="@+id/action_global__homeFragment"
-            app:destination="@id/homeFragment" />
+
     </navigation>
 
+    <action
+        android:id="@+id/action_global__homeFragment"
+        app:destination="@id/homeFragment" />
 
     <fragment
         android:id="@+id/aboutUsFragment"
