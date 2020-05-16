@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * This ext functions changes the start Destination dynamically
+     * This functions changes the start Destination dynamically
      */
     private fun changeStartDestination(@IdRes startDestination: Int) {
         val graph = navController.graph

@@ -29,6 +29,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //alternative to settings the label in the navigation graph
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.home_screen_title)
         val viewModel: HomeFragmentViewModel by viewModels()
