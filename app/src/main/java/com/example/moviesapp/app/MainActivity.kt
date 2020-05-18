@@ -25,95 +25,120 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
-    private lateinit var sharedPreferences: SharedPreferences
+	private lateinit var navController: NavController
+	private lateinit var sharedPreferences: SharedPreferences
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_main)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+		sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        navController = findNavController(R.id.nav_host_fragment)
+		navController = findNavController(R.id.nav_host_fragment)
 
-        //Set up BottomNavigationView and NavDrawer
-        setUpNavigation()
-        connectNavViewWithNavController()
+		//Set up BottomNavigationView and NavDrawer
+		setUpNavigation()
+		connectNavViewWithNavController()
 
-        //listen for registration done and show bottom navigation
-        val viewModel: MainActivityViewModel by viewModels()
+		//listen for registration done and show bottom navigation
+		val viewModel: MainActivityViewModel by viewModels()
 
-        viewModel.homeNavigationLiveData.observe(this, Observer {
-            if (it == NAVIGATION_STEP_HOME) {
+		viewModel.homeNavigationLiveData.observe(this, Observer {
+			if (it == NAVIGATION_STEP_HOME) {
 
-                bottom_nav.visibility = View.VISIBLE
-                //This way we don`t go to registration start destination when we select Home tab
-                changeStartDestination(R.id.homeFragment)
-                supportActionBar?.show()
-                drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-            }
-        })
+				bottom_nav.visibility = View.VISIBLE
+				//This way we don`t go to registration start destination when we select Home tab
+				changeStartDestination(R.id.homeFragment)
+				supportActionBar?.show()
+				drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+			}
+		})
 
-        //check if the user is registered and if not change the destination dynamically
-        if (!sharedPreferences.getBoolean(IS_USER_LOGGED, false)) {
-            goToRegisterAndHideNavigation()
-        }
-    }
+		//check if the user is registered and if not change the destination dynamically
+		if (!sharedPreferences.getBoolean(IS_USER_LOGGED, false)) {
+			goToRegisterAndHideNavigation()
+		}
+	}
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navigateUp(navController, drawer_layout)
-    }
+	override fun onSupportNavigateUp(): Boolean {
+		return navigateUp(navController, drawer_layout)
+	}
 
-    override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
+	override fun onBackPressed() {
+		if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+			drawer_layout.closeDrawer(GravityCompat.START)
+		} else {
+			super.onBackPressed()
+		}
+	}
 
-    private fun connectNavViewWithNavController() {
+	private fun connectNavViewWithNavController() {
 
-        val drawerLayout = drawer_layout
+		val drawerLayout = drawer_layout
 
-        val appBarConfiguration =
-            AppBarConfiguration.Builder(navController.graph).setDrawerLayout(drawerLayout).build()
-        setupActionBarWithNavController(this, navController, appBarConfiguration)
+		val appBarConfiguration =
+			AppBarConfiguration.Builder(navController.graph).setDrawerLayout(drawerLayout).build()
+		setupActionBarWithNavController(this, navController, appBarConfiguration)
+		nav_view.setupWithNavController(navController)
 
-        nav_view.setupWithNavController(navController)
-        nav_view.menu.findItem(R.id.logout).setOnMenuItemClickListener { item ->
-            sharedPreferences.edit().putBoolean(IS_USER_LOGGED, false).apply()
-            goToRegisterAndHideNavigation()
-            navController.popBackStack()
-            navController.navigate(navController.graph.startDestination)
-            true
-        }
-    }
+		nav_view.menu.findItem(R.id.logout).setOnMenuItemClickListener { item ->
+			sharedPreferences.edit().putBoolean(IS_USER_LOGGED, false).apply()
+			goToRegisterAndHideNavigation()
+			true
+		}
+	}
 
-    //TODO change live tv icon with appropriate one and
-    // monitor and handle the installation progress states + customisation
-    private fun setUpNavigation() {
-        val bottomNavigationView = findViewById<View>(R.id.bottom_nav) as BottomNavigationView
-        bottomNavigationView.setupWithNavController(navController)
-        NavigationUI.setupWithNavController(
-            bottomNavigationView,
-            navController
-        )
-    }
+	private fun setUpNavigation() {
+		val bottomNavigationView = findViewById<View>(R.id.bottom_nav) as BottomNavigationView
+		bottomNavigationView.setupWithNavController(navController)
 
-    /**
-     * This functions changes the start Destination dynamically
-     */
-    private fun changeStartDestination(@IdRes startDestination: Int) {
-        val graph = navController.graph
-        graph.startDestination = startDestination
-        navController.graph = graph
-    }
+		/*bottom_nav.menu.findItem(R.id.nav_graph_live_tv).setOnMenuItemClickListener{
+			val installMonitor = DynamicInstallMonitor()
+			navController.navigate(
+				it.itemId,
+				null,
+				null,
+				DynamicExtras(installMonitor)
+			)
+			if(installMonitor.isInstallRequired){
+				installMonitor.status.observe(this, object : Observer<SplitInstallSessionState> {
+					override fun onChanged(sessionState: SplitInstallSessionState) {
+						when (sessionState.status()) {
+							SplitInstallSessionStatus.INSTALLED -> {
+								// Call navigate again here or after user taps again in the UI:
+								// navController.navigate(destinationId, destinationArgs, null, null)
+							}
 
-    private fun goToRegisterAndHideNavigation() {
-        supportActionBar?.hide()
-        drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        changeStartDestination(R.id.navigation_reg)
-        bottom_nav.visibility = View.GONE
-    }
+							// Handle all remaining states:
+							SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {}
+							SplitInstallSessionStatus.FAILED -> {}
+							SplitInstallSessionStatus.CANCELED -> {}
+						}
+
+						if (sessionState.hasTerminalStatus()) {
+							installMonitor.status.removeObserver(this);
+						}
+					}
+				})
+			}
+
+			true
+		}*/
+	}
+
+	/**
+	 * This changes the start Destination dynamically
+	 */
+	private fun changeStartDestination(@IdRes startDestination: Int) {
+		val graph = navController.graph
+		graph.startDestination = startDestination
+		navController.graph = graph
+	}
+
+	private fun goToRegisterAndHideNavigation() {
+		supportActionBar?.hide()
+		drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+		changeStartDestination(R.id.navigation_reg)
+		bottom_nav.visibility = View.GONE
+	}
 }

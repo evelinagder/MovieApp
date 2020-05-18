@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragment"
+	app:progressDestination ="@id/customProgressFragment">
 
 
     <fragment
@@ -46,7 +47,6 @@
         app:graphPackage="com.example.moviesapp.missingmodule"
         app:graphResName="nav_graph_live_tv"
         app:moduleName="missingmodule" />
-
 
     <navigation
         android:id="@+id/navigation_reg"
@@ -99,5 +99,11 @@
         android:name="com.example.moviesapp.app.AboutUsFragment"
         android:label="@string/about_us_screen_title"
         tools:layout="@layout/fragment_about_us" />
+
+	<fragment
+		android:id="@+id/customProgressFragment"
+		tools:layout="@layout/fragment_custom_progress"
+		android:name="com.example.moviesapp.app.CustomProgressFragment"
+		android:label="CustomProgressFragment" />
 
 </navigation>
