@@ -13,11 +13,9 @@ open class RegistrationViewModel : ViewModel() {
     val navigationStageLiveData = MutableLiveData<String>()
 
 	fun getUsername() = user.userName
-	fun getUserPass() = user.password
 
-    fun addUserNamePassword(username: String, password: String) {
+    fun addUserNamePassword(username: String) {
         user.userName = username
-        user.password = password
         navigationStageLiveData.value = NAVIGATION_STEP_USERNAME
     }
 

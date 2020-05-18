@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
         wrong_credentials_tv.setVisible(false)
         viewModel.isLoginClicked.observe(viewLifecycleOwner, Observer {
             if (it.getContentIfNotHandled() == true) {
-                if (canLogin(username_et.text.toString(), passcode_et.text.toString())) {
+                if (canLogin(username_et.text.toString())) {
                     //We use Global Action to navigate from the nested graph
                     val navDirections = LoginFragmentDirections.actionGlobalHomeFragment()
                     Navigation.findNavController(view).navigate(navDirections)
@@ -58,10 +58,7 @@ class LoginFragment : Fragment() {
         })
 
         login_btn.setOnClickListener {
-            if (viewModel.isLoginEnabled(
-                    username_et.text.toString(),
-                    passcode_et.text.toString()
-                )
+            if (viewModel.isLoginEnabled(username_et.text.toString())
             ) {
                 viewModel.login()
             } else {
@@ -78,12 +75,11 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun canLogin(username: String?, password: String?): Boolean {
+    private fun canLogin(username: String?): Boolean {
         val sharedPreferences: SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(context)
         val savedUsername = sharedPreferences.getString(USERNAME_PREFS_KEY, "") ?: ""
-        val savedPassword = sharedPreferences.getString(PASSWORD_PREFS_KEY, "") ?: ""
-        if (username == savedUsername && password == savedPassword) {
+        if (username == savedUsername) {
             sharedPreferences.edit().putBoolean(IS_USER_LOGGED, true).apply()
             return true
         }
@@ -92,6 +88,5 @@ class LoginFragment : Fragment() {
 
     private fun clearInputFields() {
         username_et.setText("")
-        passcode_et.setText("")
     }
 }

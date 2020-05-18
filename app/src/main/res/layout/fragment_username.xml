@@ -8,7 +8,7 @@
         android:id="@+id/username_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="120dp"
         android:text="@string/user_name_text"
         android:textColor="@color/color_white"
         android:textSize="20sp"
@@ -19,55 +19,27 @@
 
     <EditText
         android:id="@+id/username_edit_text"
-		android:layout_width="@dimen/et_width"
-		android:layout_height="@dimen/et_height"
+        android:layout_width="@dimen/et_width"
+        android:layout_height="@dimen/et_height"
         android:layout_marginTop="20dp"
         android:background="@drawable/movie_list_background"
-		android:hint="@string/username_et_hint"
-		android:padding="@dimen/et_padding"
+        android:hint="@string/username_et_hint"
+        android:padding="@dimen/et_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_text_view" />
 
-    <TextView
-        android:id="@+id/password_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/password_text"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/color_white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
-
-    <EditText
-        android:id="@+id/password_edit_text"
-		android:layout_width="@dimen/et_width"
-		android:layout_height="@dimen/et_height"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/movie_list_background"
-        android:hint="@string/password_et_hint"
-		android:padding="@dimen/et_padding"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_text_view" />
-
     <Button
         android:id="@+id/button_registration_next_username"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/next_btn_text"
-		style="@style/ButtonStyle"
         android:padding="20dp"
+        android:text="@string/next_btn_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

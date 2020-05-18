@@ -11,8 +11,8 @@ class LoginViewModel : ViewModel() {
 
     val isErrorVisible = ObservableBoolean()
 
-    fun isLoginEnabled(username:String, password:String) =
-    isInputValid(username) && isInputValid(password)
+    fun isLoginEnabled(username:String) =
+    isInputValid(username)
 
 
     private val _isLoginClicked = MutableLiveData<Event<Boolean>>()
