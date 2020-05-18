@@ -20,7 +20,6 @@ import com.example.moviesapp.utils.setVisible
 import kotlinx.android.synthetic.main.fragment_login.*
 
 const val USERNAME_PREFS_KEY = "usernameKey"
-const val PASSWORD_PREFS_KEY = "passwordKey"
 const val IS_USER_LOGGED = "isUserLogged"
 
 class LoginFragment : Fragment() {
