@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_marginStart="40dp"
+	android:layout_marginEnd="40dp">
+
+	<TextView
+		android:id="@+id/screen_title_tv"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:layout_marginBottom="80dp"
+		style="@style/TitleTextStyle"
+		android:textColor="@color/colorAccent"
+		android:text="Live TV feature downloading"/>
+
+	<ProgressBar
+		android:id="@+id/progress_bar_id"
+		android:layout_width="match_parent"
+		style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toBottomOf="@id/screen_title_tv"
+		android:layout_marginTop="15dp"
+		android:indeterminate="true"/>
+
+	<TextView
+		android:id="@+id/no_module_tv"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:layout_marginBottom="80dp"
+		style="@style/TitleTextStyle"
+		android:textColor="@color/colorAccent"
+		android:text="No module tv"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
