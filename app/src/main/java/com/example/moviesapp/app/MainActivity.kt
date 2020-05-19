@@ -2,7 +2,7 @@ package com.example.moviesapp.app
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.IdRes
@@ -11,9 +11,10 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.dynamicfeatures.DynamicExtras
+import androidx.navigation.dynamicfeatures.DynamicInstallMonitor
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -21,6 +22,8 @@ import com.example.moviesapp.R
 import com.example.moviesapp.app.MainActivityViewModel.Companion.NAVIGATION_STEP_HOME
 import com.example.moviesapp.app.login.IS_USER_LOGGED
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.play.core.splitinstall.SplitInstallSessionState
+import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -92,6 +95,7 @@ class MainActivity : AppCompatActivity() {
 		val bottomNavigationView = findViewById<View>(R.id.bottom_nav) as BottomNavigationView
 		bottomNavigationView.setupWithNavController(navController)
 
+		//shows how to listen for the installation state and how to customize the installation process if necessary
 		/*bottom_nav.menu.findItem(R.id.nav_graph_live_tv).setOnMenuItemClickListener{
 			val installMonitor = DynamicInstallMonitor()
 			navController.navigate(
@@ -103,16 +107,16 @@ class MainActivity : AppCompatActivity() {
 			if(installMonitor.isInstallRequired){
 				installMonitor.status.observe(this, object : Observer<SplitInstallSessionState> {
 					override fun onChanged(sessionState: SplitInstallSessionState) {
-						when (sessionState.status()) {
-							SplitInstallSessionStatus.INSTALLED -> {
+						when {
+							sessionState.status() == SplitInstallSessionStatus.INSTALLED -> {
 								// Call navigate again here or after user taps again in the UI:
 								// navController.navigate(destinationId, destinationArgs, null, null)
 							}
 
 							// Handle all remaining states:
-							SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {}
-							SplitInstallSessionStatus.FAILED -> {}
-							SplitInstallSessionStatus.CANCELED -> {}
+							sessionState.status() == SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {}
+							sessionState.status() == SplitInstallSessionStatus.FAILED -> {}
+							sessionState.status() == SplitInstallSessionStatus.CANCELED -> {}
 						}
 
 						if (sessionState.hasTerminalStatus()) {
