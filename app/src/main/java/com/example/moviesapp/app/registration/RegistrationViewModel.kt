@@ -14,7 +14,7 @@ open class RegistrationViewModel : ViewModel() {
 
 	fun getUsername() = user.userName
 
-    fun addUserNamePassword(username: String) {
+    fun addUserName(username: String) {
         user.userName = username
         navigationStageLiveData.value = NAVIGATION_STEP_USERNAME
     }
