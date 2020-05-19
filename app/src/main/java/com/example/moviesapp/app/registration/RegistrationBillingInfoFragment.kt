@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.navGraphViewModels
 import com.example.moviesapp.R
-import com.example.moviesapp.app.login.PASSWORD_PREFS_KEY
 import com.example.moviesapp.app.login.USERNAME_PREFS_KEY
 import kotlinx.android.synthetic.main.fragment_billing_info.*
 
