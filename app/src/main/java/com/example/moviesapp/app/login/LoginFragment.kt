@@ -1,11 +1,12 @@
 package com.example.moviesapp.app.login
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.preference.PreferenceManager
 import com.example.moviesapp.R
 import com.example.moviesapp.app.MainActivityViewModel
 import com.example.moviesapp.app.MainActivityViewModel.Companion.NAVIGATION_STEP_HOME
@@ -44,6 +46,9 @@ class LoginFragment : Fragment() {
         viewModel.isLoginClicked.observe(viewLifecycleOwner, Observer {
             if (it.getContentIfNotHandled() == true) {
                 if (canLogin(username_et.text.toString())) {
+                    val imm =
+                        context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view.windowToken, 0)
                     //We use Global Action to navigate from the nested graph
                     val navDirections = LoginFragmentDirections.actionGlobalHomeFragment()
                     Navigation.findNavController(view).navigate(navDirections)
