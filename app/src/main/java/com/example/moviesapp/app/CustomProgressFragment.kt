@@ -7,6 +7,11 @@ import android.widget.TextView
 import androidx.navigation.dynamicfeatures.fragment.ui.AbstractProgressFragment
 import com.example.moviesapp.R
 import kotlinx.android.synthetic.main.fragment_custom_progress.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CustomProgressFragment: AbstractProgressFragment(R.layout.fragment_custom_progress) {
 
@@ -36,10 +41,14 @@ class CustomProgressFragment: AbstractProgressFragment(R.layout.fragment_custom_
 	}
 
 	override fun onFailed(errorCode: Int) {
-		Thread.sleep(5000)
-		noModuleTv?.visibility = View.VISIBLE
-		title?.visibility = View.GONE
-		progressBar?.visibility = View.GONE
+		GlobalScope.launch{
+			delay(5000)
+			withContext(Dispatchers.Main) {
+				noModuleTv?.visibility = View.VISIBLE
+				title?.visibility = View.GONE
+				progressBar?.visibility = View.GONE
+			}
+		}
 	}
 
 	override fun onProgress(status: Int, bytesDownloaded: Long, bytesTotal: Long) {
