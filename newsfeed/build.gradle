@@ -37,4 +37,7 @@ dependencies {
 
     //Design libs
     implementation rootProject.ext.dependencies.design
+
+    //Shared Prefs
+    implementation rootProject.ext.dependencies.sharedPreferences
 }

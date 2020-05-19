@@ -11,7 +11,6 @@
         <dist:fusing dist:include="true" />
     </dist:module>
     <application>
-        <activity android:name=".NewsFeedActivity" />
     </application>
 </manifest>
 
