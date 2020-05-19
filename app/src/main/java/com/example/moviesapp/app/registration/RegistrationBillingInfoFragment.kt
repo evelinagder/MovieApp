@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.navGraphViewModels
 import com.example.moviesapp.R
-import com.example.moviesapp.app.login.PASSWORD_PREFS_KEY
 import com.example.moviesapp.app.login.USERNAME_PREFS_KEY
 import kotlinx.android.synthetic.main.fragment_billing_info.*
 
@@ -56,13 +55,12 @@ class RegistrationBillingInfoFragment : Fragment() {
                 cardNumber,
                 cardName
             )
-			saveUserCredentials(viewModel.getUsername(), viewModel.getUserPass())
+			saveUserCredentials(viewModel.getUsername())
         }
     }
 
-	private fun saveUserCredentials(username:String?, password: String?){
+	private fun saveUserCredentials(username:String?){
 		val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 		sharedPreferences.edit().putString(USERNAME_PREFS_KEY, username).apply()
-		sharedPreferences.edit().putString(PASSWORD_PREFS_KEY, password).apply()
 	}
 }

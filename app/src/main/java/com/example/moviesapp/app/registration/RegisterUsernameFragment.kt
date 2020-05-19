@@ -14,7 +14,7 @@ import com.example.moviesapp.R
 import com.example.moviesapp.app.registration.RegistrationViewModel.Companion.NAVIGATION_STEP_USERNAME
 import kotlinx.android.synthetic.main.fragment_username.*
 
-class RegisterUserPasswordFragment : Fragment() {
+class RegisterUsernameFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,8 +38,8 @@ class RegisterUserPasswordFragment : Fragment() {
 
         button_registration_next_username.setOnClickListener {
             val username = username_edit_text.text.toString()
-            val pass = password_edit_text.text.toString()
-            if (username.isEmpty() || pass.isEmpty()) {
+
+            if (username.isEmpty()) {
                 Toast.makeText(
                     view.context,
                     "Username and Password cannot be empty!",
@@ -48,8 +48,7 @@ class RegisterUserPasswordFragment : Fragment() {
                 return@setOnClickListener
             }
             viewModel.addUserNamePassword(
-                username,
-                pass
+                username
             )
         }
     }

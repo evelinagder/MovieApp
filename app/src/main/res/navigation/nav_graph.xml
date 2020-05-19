@@ -63,7 +63,7 @@
 
         <fragment
             android:id="@+id/registerUserPasswordFragment"
-            android:name="com.example.moviesapp.app.registration.RegisterUserPasswordFragment"
+            android:name="com.example.moviesapp.app.registration.RegisterUsernameFragment"
             android:label="RegisterUserPasswordFragment">
             <action
                 android:id="@+id/go_to_age_fragment_action"
