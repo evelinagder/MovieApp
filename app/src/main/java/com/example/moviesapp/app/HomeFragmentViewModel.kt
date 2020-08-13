@@ -7,7 +7,6 @@ import com.example.service.MovieRepositoryImpl
 
 class HomeFragmentViewModel : ViewModel() {
 
-
     private val repository = MovieRepositoryImpl()
     val getListTrigger = MutableLiveData<Boolean>()
     val moviesResponse = Transformations.switchMap(getListTrigger) {

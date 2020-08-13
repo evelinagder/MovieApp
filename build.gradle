@@ -13,12 +13,17 @@ buildscript {
                 junitVersion       : '4.12',
                 testRunnerVersion  : '1.1.0-alpha4',
                 espressoCoreVersion: '3.1.0-alpha4',
-                navigationVersion  : '2.3.0-alpha04'
+                navigationVersion  : '2.3.0-alpha04',
+                navVersion         : '2.3.0-alpha05',
+
+                prefsVersion         : '1.1.1'
         ]
 
         dependencies = [
                 kotlinStdlib        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${dependencyVersions.kotlinVersion}",
                 kotlinReflect       : "org.jetbrains.kotlin:kotlin-reflect:${dependencyVersions.kotlinVersion}",
+
+                sharedPreferences: "androidx.preference:preference:${dependencyVersions.prefsVersion}",
 
                 lifecycleExtensions : "androidx.lifecycle:lifecycle-extensions:${dependencyVersions.lifecycle}",
                 lifecycleCommonJava8: "androidx.lifecycle:lifecycle-common-java8:${dependencyVersions.lifecycle}",
@@ -31,7 +36,8 @@ buildscript {
 
                 dataBindingCompiler : "com.android.databinding:compiler:${dependencyVersions.compiler_version}",
                 navigationFragment  : "android.arch.navigation:navigation-fragment-ktx:${dependencyVersions.navigationVersion}",
-                navigationUi        : "android.arch.navigation:navigation-ui-ktx:${dependencyVersions.navigationVersion}"
+                navigationUi        : "android.arch.navigation:navigation-ui-ktx:${dependencyVersions.navigationVersion}",
+                dynamicFeaturesNavigation: "androidx.navigation:navigation-dynamic-features-fragment:${dependencyVersions.navVersion}"
         ]
 
     }

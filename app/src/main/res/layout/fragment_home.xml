@@ -1,16 +1,11 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <data>
-        <variable
-                name="homeFragmentVM"
-                type="com.example.moviesapp.app.HomeFragmentViewModel"/>
-    </data>
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/movies_recycler"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="50dp"
+    android:background="@color/colorPrimaryTransparentLight"
+    android:orientation="vertical"
+    android:padding="15dp">
 
-    <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
-                                               android:layout_height="wrap_content"
-                                               android:orientation="vertical"
-                                               android:id="@+id/movies_recycler"
-                                               android:padding="15dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-</layout>
+</androidx.recyclerview.widget.RecyclerView>

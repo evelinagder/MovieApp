@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item android:state_enabled="true" android:state_pressed="false">
+		<shape android:shape="rectangle">
+			<corners android:radius="6dp"/>
+			<solid android:color="@color/colorPrimaryTransparent"/>
+			<size android:width="150dp" android:height="50dp" />
+		</shape>
+	</item>
+
+	<item android:state_enabled="true" android:state_pressed="true">
+		<shape android:shape="rectangle">
+			<corners android:radius="6dp" />
+			<size android:width="150dp" android:height="50dp" />
+			<solid android:color="@color/colorPrimaryTransparent" />
+		</shape>
+	</item>
+	<item
+		android:state_enabled="false"
+		android:drawable="@drawable/button_disabled_background" />
+</selector>

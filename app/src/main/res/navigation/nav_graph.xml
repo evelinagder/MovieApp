@@ -1,25 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/homeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment"
+	app:progressDestination ="@id/customProgressFragment">
 
 
-    <fragment android:id="@+id/homeFragment"
-              android:name="com.example.moviesapp.app.HomeFragment"
-              android:label="HomeFragment"
-              tools:layout="@layout/fragment_home">
-        <action android:id="@+id/action_homeFragment_to_placeholder"
-                app:destination="@id/detailsFragment"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.moviesapp.app.HomeFragment"
+        android:label="@string/home_screen_title"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_placeholder"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
-    <fragment android:id="@+id/detailsFragment"
-              android:label="MovieDetailsFragment"
-              android:name="com.example.moviesapp.app.MovieDetailsFragment">
-        <argument android:name="movie"
-                  app:argType="com.example.service.model.Movie"/>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.moviesapp.app.MovieDetailsFragment"
+        android:label="@string/details_screen_title">
+        <argument
+            android:name="movie"
+            app:argType="com.example.service.model.Movie" />
     </fragment>
+
+    <include-dynamic
+        android:id="@+id/nav_graph_news"
+        app:graphPackage="com.example.moviesapp.newsfeed"
+        app:graphResName="nav_graph_news"
+        app:moduleName="newsfeed" />
+
+    <include-dynamic
+        android:id="@+id/nav_graph_library"
+        app:graphPackage="com.example.moviesapp.movieslibrary"
+        app:graphResName="nav_graph_library"
+        app:moduleName="movieslibrary" />
+
+    <include-dynamic
+        android:id="@+id/nav_graph_live_tv"
+        app:graphPackage="com.example.moviesapp.missingmodule"
+        app:graphResName="nav_graph_live_tv"
+        app:moduleName="missingmodule" />
+
+    <navigation
+        android:id="@+id/navigation_reg"
+        app:startDestination="@id/loginFragment">
+
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.example.moviesapp.app.login.LoginFragment"
+            android:label="Login">
+            <action
+                android:id="@+id/go_to_registration"
+                app:destination="@id/registerUserPasswordFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/registerUserPasswordFragment"
+            android:name="com.example.moviesapp.app.registration.RegisterUsernameFragment"
+            android:label="RegisterUserPasswordFragment">
+            <action
+                android:id="@+id/go_to_age_fragment_action"
+                app:destination="@id/registrationAgeCountryFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/billingInfoFragment"
+            android:name="com.example.moviesapp.app.registration.RegistrationBillingInfoFragment"
+            android:label="BillingInfoFragment">
+            <action
+                android:id="@+id/to_login_action"
+                app:destination="@id/loginFragment"
+                app:popUpTo="@+id/loginFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/registrationAgeCountryFragment"
+            android:name="com.example.moviesapp.app.registration.RegistrationAgeCountryFragment"
+            android:label="RegistrationAgeCountryFragment">
+            <action
+                android:id="@+id/action_go_to_billingInfoFragment"
+                app:destination="@id/billingInfoFragment" />
+        </fragment>
+
+    </navigation>
+
+    <action
+        android:id="@+id/action_global__homeFragment"
+        app:destination="@id/homeFragment" />
+
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.moviesapp.app.AboutUsFragment"
+        android:label="@string/about_us_screen_title"
+        tools:layout="@layout/fragment_about_us" />
+
+	<fragment
+		android:id="@+id/customProgressFragment"
+		tools:layout="@layout/fragment_custom_progress"
+		android:name="com.example.moviesapp.app.CustomProgressFragment"
+		android:label="CustomProgressFragment" />
+
 </navigation>

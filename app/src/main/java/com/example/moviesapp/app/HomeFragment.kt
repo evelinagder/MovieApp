@@ -2,42 +2,45 @@ package com.example.moviesapp.app
 
 
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.navigation.navOptions
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.moviesapp.BR
 import com.example.moviesapp.R
 import com.example.moviesapp.app.recyclerview.MoviesAdapter
-import com.example.moviesapp.databinding.FragmentHomeBinding
-import com.example.moviesapp.view.BaseFragment
-import com.example.service.model.KidsMoviesResponse
+import com.example.moviesapp.app.registration.RegistrationViewModel
 import com.example.service.model.Status
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>() {
+class HomeFragment : Fragment() {
 
-
-    override fun getViewModelResId(): Int = BR.homeFragmentVM
-
-    override fun getLayoutResId(): Int = R.layout.fragment_home
-
-    override fun getViewModelClass(): Class<HomeFragmentViewModel> = HomeFragmentViewModel::class.java
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(R.layout.fragment_home, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.moviesRecycler.layoutManager = LinearLayoutManager(this@HomeFragment.context)
+        //alternative to settings the label in the navigation graph
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.home_screen_title)
+        val viewModel: HomeFragmentViewModel by viewModels()
+
+        movies_recycler.layoutManager = LinearLayoutManager(this@HomeFragment.context)
         viewModel.moviesResponse.observe(viewLifecycleOwner, Observer {
             if (it.status == Status.SUCCESS) {
                 val moviesResult = it.data
-                binding.moviesRecycler.adapter = MoviesAdapter(moviesResult?.results)
+                movies_recycler.adapter = MoviesAdapter(moviesResult?.results)
             }
         })
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         viewModel.getListTrigger.value = true
     }
 }

@@ -7,9 +7,8 @@ apply plugin: 'androidx.navigation.safeargs'
 android {
     compileSdkVersion 29
 
-
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -34,7 +33,11 @@ dependencies {
     // Navigation
     implementation rootProject.ext.dependencies.navigationFragment
     implementation rootProject.ext.dependencies.navigationUi
+    implementation rootProject.ext.dependencies.dynamicFeaturesNavigation
 
     //Design libs
     implementation rootProject.ext.dependencies.design
+
+    //Shared Prefs
+    implementation rootProject.ext.dependencies.sharedPreferences
 }

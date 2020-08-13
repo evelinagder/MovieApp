@@ -15,8 +15,8 @@ import com.example.moviesapp.databinding.ItemMovieBinding
 import com.example.service.model.Movie
 
 
-
-class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
+class MoviesAdapter(private val movies: List<Movie>?) :
+    RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
 
@@ -34,18 +34,18 @@ class MoviesAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<Mov
     override fun getItemCount(): Int = movies?.size ?: 0
 
 
-    class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MovieViewHolder(private val binding: ItemMovieBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun update(movie: Movie?) {
 
             binding.itemMovieTitle.text = movie?.title
-            Glide.with(binding.itemMovieImage.context)
-                .load(movie?.posterImageUrl)
-                .into(binding.itemMovieImage)
+            binding.itemRating.text = "Rating ${movie?.rating}"
             binding.root.setOnClickListener {
                 //pass the movie as safeArgs to DetailsFragment
                 movie?.let { movie ->
-                    val navigationDirection = HomeFragmentDirections.actionHomeFragmentToPlaceholder(movie)
+                    val navigationDirection =
+                        HomeFragmentDirections.actionHomeFragmentToPlaceholder(movie)
                     Navigation.findNavController(it).navigate(navigationDirection)
                 }
             }

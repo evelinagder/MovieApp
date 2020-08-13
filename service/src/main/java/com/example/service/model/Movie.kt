@@ -10,7 +10,8 @@ const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w185"
 data class Movie(
     @SerializedName("title") val title: String,
     @SerializedName("poster_path") private val posterUrl: String,
-    @SerializedName("overview") val overview: String
+    @SerializedName("overview") val overview: String,
+    @SerializedName("vote_average") val rating: String
 ) : Parcelable {
 
     val posterImageUrl: String

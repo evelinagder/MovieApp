@@ -7,6 +7,7 @@ import retrofit2.http.GET
 
 interface MoviesService {
 
-    @GET("discover/movie?certification_country=US&certification.lte=G&sort_by=vote_average.desc&api_key=07a4979bf41d8c39a9be0358a4b1ca3a")
+    @GET("movie/popular?api_key=9793e782a0e0496fff7f67540c038a37&language=en-US&page=1")
+
     fun getPopularKidsMovies(): LiveData<ApiResponse<KidsMoviesResponse>>
 }
